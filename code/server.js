@@ -20,7 +20,10 @@ app.get("/contacts/:id", (req, res) => {
   const filteredContacts = contacts.contacts.filter((item) => {
     return (contactId == item.id)
   })
-  res.json(filteredContacts)
+  if (filteredContacts.length > 0) {
+    res.json(filteredContacts)
+  } else res.send("404 page not found")
+
 })
 
 app.get("*", (req, res) => {
