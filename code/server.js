@@ -18,12 +18,11 @@ app.get("/contacts", (req, res) => {
 app.get("/contacts/:id", (req, res) => {
   const contactId = req.params.id
   const filteredContacts = contacts.contacts.filter((item) => {
-    return (contactId == item.id)
+    return (contactId == item.id) || (contactId == item.name) || (contactId == item.phoneNumber) || (contactId == item.emailAddress)
   })
   if (filteredContacts.length > 0) {
     res.json(filteredContacts)
   } else res.send("404 page not found")
-
 })
 
 app.get("*", (req, res) => {
